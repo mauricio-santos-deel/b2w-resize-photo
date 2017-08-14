@@ -41,6 +41,15 @@ $ npm start
 ```
 
 ## Consuming the resizing photo service
+After starting the server, you can use any Http Client to consume the service after starting the server. I used [Advanced REST Client google chrome extension](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo).
+
+First let's send a GET HTTP Request to `api/image`'. This should return the list of resized images.
+
+It returned a empty array because the service that downloads and resize the images has not been run. Let's run it by sending a POST HTTP Request to `api/images`.
+
+After waiting 10 seconds, send again a GET HTTP Request to `api/image`'. This should return the list of resized images.
+
+Great! You can also request the `server/imageName` to return the image. See:
 
 ## Testing the app
 The unit tests was developed using mocha. To run the tests, on your terminal, run the command bellow, but, before running the command make sure that the app is not running.
