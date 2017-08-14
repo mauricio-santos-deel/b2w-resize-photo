@@ -5,6 +5,10 @@ const Image = mongoose.model('images');
 const downloadService = require('./download-service');
 const resizeService = require('./resize-service');
 
+/**
+ * First it will consume external service and retrieve the images URL, then
+ * it will starts download and resize service.
+ */
 function start() {
 	// request image list
 	axios.get("http://54.152.221.29/images.json")
@@ -30,6 +34,11 @@ function start() {
 	});
 }
 
+/**
+ * Starts download and resize service.
+ * @param  {Object} extServiceRes external service response
+ * @return {Promise} that will resolve when donwload ans resize finished.
+ */
 function downloadAndResize(extServiceRes) {
 	return new Promise((resolve, reject) => {
 		downloadService.start(extServiceRes.data.images)
@@ -53,6 +62,10 @@ function downloadAndResize(extServiceRes) {
 
 }
 
+/**
+ * Saves image data in database
+ * @param  {Object} imageData Image data containing all file size names
+ */
 function persistImage(imageData) {
 	var newImage = new Image(imageData);
 

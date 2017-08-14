@@ -28,6 +28,12 @@ let smallSize = {
 let promiseResolve;
 let promiseReject;
 
+/**
+ * Start resize process
+ * @param  {Array} successDownloadList Array of objects containing information
+ * about all downloaded files.
+ * @return {Promise} Will resolve when all files were resized to all formats
+ */
 function startResize(successDownloadList) {
 	imageIndex = 0;
 	downloadedImages = successDownloadList;
@@ -46,6 +52,11 @@ function startResize(successDownloadList) {
 	});
 }
 
+/**
+ * Resize the image in imageIndex position inside downloadedImages to the size in parameter.
+ * After resizing will start next size resizing all will call resizeNext
+ * @param  {Object} size containing size to resize information
+ */
 function resizeImages(size) {
 	var imageName = downloadedImages[imageIndex].fileName;
 	var resizedName = downloadedImages[imageIndex].fileName.replace(".", `_${size.preffix}.`);
@@ -66,6 +77,10 @@ function resizeImages(size) {
 	});
 }
 
+/**
+ * Resizes next image inside imageDataList, starting by small size,
+ * or resolve resize service, if next possition in array is null or undefined.
+ */
 function resizeNext() {
 	imageIndex++;
 
