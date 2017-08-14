@@ -17,11 +17,13 @@ function start() {
 			}
 		})
 		.catch( err => {
+			// error while downloading or resizing images
 			console.log(err);
 			console.log('Error in download-and-resize-service');
 		});
 	})
 	.catch( err => {
+		// error while requesting external service
 		console.log(err);
 		console.log('Error in image-service');
 	});
@@ -36,6 +38,7 @@ function downloadAndResize(extServiceRes) {
 				resolve(importRes);
 			})
 			.catch( err => {
+				// internal error in resize service
 				console.log('Error in resize-service');
 				reject(err);
 			});
@@ -55,9 +58,7 @@ function persistImage(imageData) {
 	newImage.save(
 		(err, dbResult) => {
 			if (err) {
-				// console.log('do something');
-			} else {
-				// console.log(dbResult);
+				console.log(err);
 			}
 		}
 	);
