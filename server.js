@@ -44,9 +44,6 @@ app.get('*', function (request, response){
 // Listen
 var server = app.listen(port, function () {
 	console.log(`The app is running on port: ${port}`);
-
-	const deleteService = require("./src/server/service/delete-service");
-	deleteService.start();
 });
 
 module.exports = app; // for testing
