@@ -1,0 +1,29 @@
+{
+  "name": "b2w-resize-photo",
+  "version": "1.0.0",
+  "description": "This app will consume a external service that will retrieve a JSON with a list of images URL. After that, this app will resize those images in 3 different formats and store them. This app will also serve a service that will retrieve the list of photos.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server",
+    "test": "mocha"
+  },
+  "author": {
+    "name": "Mauricio Santos",
+    "email": "msantos.sw@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "gm": "^1.23.0",
+    "jimp": "^0.2.28",
+    "mongoose": "^4.11.6"
+  }
+}
