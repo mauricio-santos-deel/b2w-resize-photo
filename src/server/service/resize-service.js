@@ -3,11 +3,10 @@ const gm = require('gm');
 const path = require('path');
 
 // Store information about the resize process
-var imageIndex;
-var imagePath;
-var downloadedImages;
-var resizeOutput;
-var smallSize = {
+let imageIndex;
+let downloadedImages;
+let resizeOutput;
+let smallSize = {
 	preffix: 'sm',
 	w: 320,
 	h: 240,
@@ -26,12 +25,11 @@ var smallSize = {
 };
 
 // Store promise cbs
-var promiseResolve;
-var promiseReject;
+let promiseResolve;
+let promiseReject;
 
 function startResize(successDownloadList) {
 	imageIndex = 0;
-	imagePath = path.resolve(__dirname, '../../../public');
 	downloadedImages = successDownloadList;
 
 	// prepare image resize output
@@ -51,9 +49,9 @@ function startResize(successDownloadList) {
 function resizeImages(size) {
 	var imageName = downloadedImages[imageIndex].fileName;
 	var resizedName = downloadedImages[imageIndex].fileName.replace(".", `_${size.preffix}.`);
-	var resizedPath = imagePath + `\\${resizedName}`;
+	var resizedPath = IMAGE_DIR + `\\${resizedName}`;
 
-	gm(imagePath + `\\${imageName}`)
+	gm(IMAGE_DIR + `\\${imageName}`)
 	.resize(size.w, size.h)
 	.write(resizedPath , err => {
 		if (!err) {

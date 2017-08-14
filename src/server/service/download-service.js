@@ -3,17 +3,15 @@ var fs = require('fs');
 const path = require('path');
 
 // Store information about the download process
-var imageIndex;
-var imagePath;
-var imageDataList;
-var downloadStatus;
+let imageIndex;
+let imageDataList;
+let downloadStatus;
 
 // Store promise cbs
-var promiseResolve;
-var promiseReject;
+let promiseResolve;
+let promiseReject;
 
 function startDownload(data) {
-	imagePath = path.resolve(__dirname, '../../../public');
 	imageDataList = data;
 	imageIndex = 0;
 	downloadStatus = {
@@ -39,7 +37,7 @@ function downloadImage() {
 	})
 	.then( response => {
 		var fileName = url.substr(url.lastIndexOf("/") + 1);
-		var filePath = imagePath + `\\${fileName}`;
+		var filePath = IMAGE_DIR + `\\${fileName}`;
 		response.data.pipe(fs.createWriteStream(filePath));
 
 		downloadStatus.success.push({

@@ -22,6 +22,9 @@ const models = require('./src/server/model/models');
 const routes = require('./src/server/routes');
 routes(app);
 
+// set global variable to store images dir
+global.IMAGE_DIR = path.resolve(__dirname, './public');
+
 // Serve static assets
 app.use(express.static(__dirname + '/public'))
 
