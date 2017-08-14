@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 // Set and connect mongoose
 mongoose.Promise = global.Promise;
 const db = mongoose.connect("mongodb://localhost/b2w-resize-photo", { useMongoClient: true });
-// initialize schema
-const imageModel = require('./src/server/image-model');
+// initialize schemas
+const models = require('./src/server/model/models');
 
 // Set sys API Routes
 const routes = require('./src/server/routes');

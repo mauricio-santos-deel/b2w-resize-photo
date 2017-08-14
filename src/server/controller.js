@@ -3,12 +3,13 @@ const Image = mongoose.model('images');
 const fs = require('fs');
 const path = require('path');
 
-const imageService = require('./image-service');
+const imageService = require('./service/image-service');
 
 exports.initImages = function(req, res) {
-	imageService.start().then( () => {
-		res.json({ result: 'Success' });
-	});
+	// run assync
+	imageService.start();
+	// respond with imageService Status
+	res.json({ result: 'Started' });
 };
 
 /**
@@ -66,7 +67,6 @@ exports.deleteAllImageInfo = function(req, res) {
 				}
 
 				res.json({ result: 'Success' });
-				console.log('Response');
 			}
 		}
 	);
@@ -74,8 +74,8 @@ exports.deleteAllImageInfo = function(req, res) {
 
 function unlinkCb(err) {
 	if(err) {
-		console.log('do something');
+		// console.log('do something');
 	}
 
-	console.log('Finished Unlink');
+	// console.log('Finished Unlink');
 }
