@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 const db = mongoose.connect("mongodb://localhost/b2w-resize-photo", { useMongoClient: true });
 // initialize schemas
-const models = require('./src/server/model/models');
+const imageModel = require('./src/server/model/image-model');
 
 // Set sys API Routes
 const routes = require('./src/server/routes');
@@ -36,6 +36,9 @@ app.get('*', function (request, response){
 // Listen
 var server = app.listen(port, function () {
 	console.log(`The app is running on port: ${port}`);
+
+	const deleteService = require("./src/server/service/delete-service");
+	deleteService.start();
 });
 
 module.exports = app; // for testing

@@ -9,6 +9,7 @@ function start() {
 	// request image list
 	axios.get("http://54.152.221.29/images.json")
 	.then( response => {
+
 		// After requesting the list, download and resize images
 		downloadAndResize(response).then( processedImages => {
 			// Finally, persist in db
