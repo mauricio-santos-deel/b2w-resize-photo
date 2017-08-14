@@ -44,12 +44,16 @@ $ npm start
 After starting the server, you can use any Http Client to consume the service after starting the server. I used [Advanced REST Client google chrome extension](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo).
 
 First let's send a GET HTTP Request to `api/image`'. This should return the list of resized images.
+![img1](https://user-images.githubusercontent.com/23347207/29290756-a3af2c68-8117-11e7-9a37-667ba453d816.png)
 
 It returned a empty array because the service that downloads and resize the images has not been run. Let's run it by sending a POST HTTP Request to `api/images`.
+![img2](https://user-images.githubusercontent.com/23347207/29290758-a749f6dc-8117-11e7-8ddf-a73bde697edf.png)
 
 After waiting 10 seconds, send again a GET HTTP Request to `api/image`'. This should return the list of resized images.
+![img3](https://user-images.githubusercontent.com/23347207/29290760-a9a3039c-8117-11e7-966e-937e57c0bb7a.png)
 
 Great! You can also request the `server/imageName` to return the image. See:
+![img4](https://user-images.githubusercontent.com/23347207/29290765-abd8004a-8117-11e7-841d-6b245f7da7ce.png)
 
 ## Testing the app
 The unit tests was developed using mocha. To run the tests, on your terminal, run the command bellow, but, before running the command make sure that the app is not running.
