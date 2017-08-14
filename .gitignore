@@ -9,3 +9,4 @@ package-lock.json
 
 # Target folder to download feature 
 public/*.jpg
+test/images/*.jpg
