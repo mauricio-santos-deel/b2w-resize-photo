@@ -36,13 +36,14 @@ function downloadAndResize(extServiceRes) {
 				resolve(importRes);
 			})
 			.catch( err => {
-				console.log(err);
 				console.log('Error in resize-service');
+				reject(err);
 			});
 		})
 		.catch( err => {
-			console.log(err);
+			// no image was downloaded
 			console.log('Error in download-service');
+			reject(err);
 		});
 	});
 
